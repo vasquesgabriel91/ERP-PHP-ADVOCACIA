@@ -1,5 +1,5 @@
 <?php
-namespace app\router;
+namespace database;
 
 use PDO;
 use PDOException;
