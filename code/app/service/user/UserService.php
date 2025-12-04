@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\User;
+namespace App\Service\UserService;
 use App\Repository\UserRepository;
 
 class UserService {
@@ -9,7 +9,7 @@ class UserService {
     public function __construct() {
         $this->userRepository = new UserRepository();
     }
-    public function getUserByUsername(string $username) {
+    public function getUserByUserName(string $username) {
         $user = $this->userRepository->findByUsername($username);
 
         if (!$user) throw new \Exception("User not found");
@@ -24,13 +24,9 @@ class UserService {
 
         return $email;
     }
+    
     public function createUser($data) {
-        [
-            'username'=>$username,
-            'email'=>$email,
-            'password'=>$password
-        ] = $data;
-         
+    
         $this->userRepository->createUser($username, $email, $password);
         
     }

@@ -1,20 +1,24 @@
 <?php
 namespace App\Controller;
 
-use App\Core\UserService;
+use App\Domain\UseCase;
 use App\Core\Request;
 
 class UserController {
 
-    private UserService $userService;
+    private UserUseCase $userUseCase;
 
     public function __construct() {
-        $this->userService = new UserService();
+        $this->userUseCase = new UserUseCase();
     }
     
     public function store(Request $request) {
         $data = $request->body();
-        $this->userService->createUser($data);
+
+        if(!$data) throw new \Exception("No Data in Body");
+
+
+        $this->userUseCase->createUser($data);
         redirect()->toRoute('user.list');
     }
 }

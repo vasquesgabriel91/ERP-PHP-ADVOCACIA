@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Core\Helpers;
-use app\core\Router;
+use App\Core\Router;
 
 class Redirect{
+
     private Router $router;
+    
     public function __construct(Router $router) {
         $this->router = $router;
     }

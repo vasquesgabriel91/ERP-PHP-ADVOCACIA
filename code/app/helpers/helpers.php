@@ -1,6 +1,6 @@
 <?php
 
-use App\Core\Redirect;
+use App\Helpers\Redirect;
 use App\Core\View;
 
 function view(string $template, array $data = []) {
