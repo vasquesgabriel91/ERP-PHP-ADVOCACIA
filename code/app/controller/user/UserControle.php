@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Core\UserService;
+use App\Core\Request;
 
 class UserController {
 
@@ -11,8 +12,9 @@ class UserController {
         $this->userService = new UserService();
     }
     
-    public function store() {
-        $this->userService->createUser($_POST);
+    public function store(Request $request) {
+        $data = $request->body();
+        $this->userService->createUser($data);
         redirect()->toRoute('user.list');
     }
 }
